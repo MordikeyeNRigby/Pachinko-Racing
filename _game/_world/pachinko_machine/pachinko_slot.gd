@@ -1,0 +1,1 @@
+class_name PachinkoSlot extends NetworkArea2D
