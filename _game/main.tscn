@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq8h6hnwn2jli"]
+
+[ext_resource type="PackedScene" uid="uid://i2hejhsqv13j" path="res://_game/_world/world.tscn" id="1_y1owq"]
+[ext_resource type="Script" uid="uid://cmgbf8ed0ha3y" path="res://_game/multiplayer/networker.gd" id="2_qufvk"]
+[ext_resource type="PackedScene" uid="uid://bqgusp0nwj3xn" path="res://_game/multiplayer/multiplayer_ui.tscn" id="2_qvplc"]
+[ext_resource type="Script" uid="uid://c8p8gymii2y5v" path="res://addons/netfox.extras/physics/godot_driver_2d.gd" id="4_5ck8n"]
+
+[node name="Main" type="Node"]
+
+[node name="World" parent="." instance=ExtResource("1_y1owq")]
+
+[node name="Networker" type="Node" parent="."]
+script = ExtResource("2_qufvk")
+
+[node name="Multiplayer_Test_UI" parent="." instance=ExtResource("2_qvplc")]
+
+[node name="PhysicsDriver2D" type="Node" parent="."]
+script = ExtResource("4_5ck8n")
+metadata/_custom_type_script = ExtResource("4_5ck8n")
+
+[connection signal="new_peer" from="Networker" to="World" method="_on_networker_new_peer"]
+[connection signal="host" from="Multiplayer_Test_UI" to="Networker" method="on_create_server"]
+[connection signal="join" from="Multiplayer_Test_UI" to="Networker" method="on_join_server"]

@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqgusp0nwj3xn"]
+
+[ext_resource type="Script" uid="uid://bs1wo3adkdo7d" path="res://_game/multiplayer/multiplayer_test_ui.gd" id="1_qgtrb"]
+[ext_resource type="Script" uid="uid://hvpti7j63a4" path="res://_game/ui/h_box_container_3.gd" id="2_qf6i6"]
+
+[node name="Multiplayer_Test_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -679.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qgtrb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.41059
+anchor_bottom = 0.507716
+metadata/_edit_use_anchors_ = true
+
+[node name="Host_Join" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 53.2)
+layout_mode = 2
+
+[node name="Lan Host" type="Button" parent="VBoxContainer/Host_Join"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LAN Host"
+
+[node name="Lan Join" type="Button" parent="VBoxContainer/Host_Join"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LAN Join"
+
+[node name="Enet Host" type="Button" parent="VBoxContainer/Host_Join"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ENET Host"
+
+[node name="Enet Join" type="Button" parent="VBoxContainer/Host_Join"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ENET Join"
+
+[node name="IP_Port" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 53.2)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IP_Port"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP:"
+
+[node name="IP" type="LineEdit" parent="VBoxContainer/IP_Port"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+
+[node name="Label2" type="Label" parent="VBoxContainer/IP_Port"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Port:"
+
+[node name="Port" type="LineEdit" parent="VBoxContainer/IP_Port"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "55692"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Clients Connected"
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_qf6i6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 53.2)
+layout_mode = 2
+
+[node name="Leave" type="Button" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Leave Session"
+
+[connection signal="button_up" from="VBoxContainer/Host_Join/Lan Host" to="." method="_on_lan_host_button_up"]
+[connection signal="button_up" from="VBoxContainer/Host_Join/Lan Join" to="." method="_on_lan_join_button_up"]
+[connection signal="button_up" from="VBoxContainer/Host_Join/Enet Host" to="." method="_on_enet_host_button_up"]
+[connection signal="button_up" from="VBoxContainer/Host_Join/Enet Join" to="." method="_on_enet_join_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer4/Leave" to="." method="_on_leave_button_up"]
