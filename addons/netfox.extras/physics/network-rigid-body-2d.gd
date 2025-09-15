@@ -7,7 +7,7 @@ class_name NetworkRigidBody2D
 
 @onready var direct_state = PhysicsServer2D.body_get_direct_state(get_rid())
 
-@export var physics_state: Array:
+var physics_state: Array:
 	get: return get_state()
 	set(v): set_state(v)
 
@@ -40,5 +40,5 @@ func set_state(remote_state: Array) -> void:
 
 ## Override and apply any logic, forces or impulses to the rigid body as you would in physics_process
 ## The physics engine will run its simulation during rollback_tick with other nodes
-func _physics_rollback_tick(_delta: float, _tick: int):
+func _physics_rollback_tick(_delta, _tick):
 	pass
